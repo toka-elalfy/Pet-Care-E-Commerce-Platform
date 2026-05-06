@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import  { useState, useMemo } from 'react';
 import Sidebar from '../components/Sidebar';
 import { ShoppingCart, X, Check, Plus, SlidersHorizontal } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -79,10 +79,10 @@ export default function BundleBuilder() {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#FDFCF9] font-sans">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-[#FDFCF9] font-sans">
       <Sidebar />
 
-      <main className="flex-1 p-8 lg:p-12 overflow-y-auto">
+      <main className="flex-1 p-4 pt-24 sm:p-8 sm:pt-24 lg:p-12 overflow-x-hidden overflow-y-auto">
         <div className="max-w-7xl mx-auto">
 
           {/* Header */}
@@ -107,7 +107,7 @@ export default function BundleBuilder() {
                   : <span className="font-bold text-[#1B4332]">Max discount unlocked! 🎉</span>}
               </p>
             </div>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {[5, 10, 15, 20].map((tier, idx) => {
                 const isActive = discountInfo.percentage >= tier;
                 const minItems = idx + 2;
@@ -129,10 +129,10 @@ export default function BundleBuilder() {
           </div>
 
           {/* Main Content: Products + Sidebar */}
-          <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
+          <div className="flex flex-col lg:flex-row gap-8 items-start">
 
             {/* Left: Filters + Product Grid */}
-            <div style={{ flex: '1 1 0%', minWidth: 0 }}>
+            <div className="flex-1 min-w-0 w-full">
 
               {/* Filters */}
               <div className="flex flex-wrap items-center gap-3 mb-8">
@@ -226,7 +226,7 @@ export default function BundleBuilder() {
             </div>
 
             {/* Right: Your Bundle Sidebar */}
-            <div style={{ width: '320px', flexShrink: 0, position: 'sticky', top: '2rem' }}>
+            <div className="w-full lg:w-[320px] shrink-0 lg:sticky lg:top-8">
               <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-5">

@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
+import  { useMemo } from 'react';
 import Sidebar from '../components/Sidebar';
-import { ArrowLeft, Trash2, Minus, Plus, ShoppingCart as CartIcon, RefreshCw, Lock, ChevronLeft } from 'lucide-react';
+import { Trash2, Minus, Plus, ShoppingCart as CartIcon, RefreshCw, Lock, ChevronLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
@@ -26,10 +26,10 @@ export default function ShoppingCart() {
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="flex min-h-screen bg-[#FDFCF9] font-sans">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-[#FDFCF9] font-sans">
       <Sidebar />
 
-      <main className="flex-1 overflow-y-auto">
+      <main className="flex-1 overflow-x-hidden overflow-y-auto p-4 pt-24 sm:p-8 sm:pt-24 lg:p-12">
         <AnimatePresence mode="wait">
           {cartItems.length === 0 ? (
             /* ===== EMPTY CART STATE ===== */
@@ -66,7 +66,7 @@ export default function ShoppingCart() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="p-8 lg:p-12"
+              className="w-full"
             >
               <div className="max-w-5xl mx-auto">
 
@@ -86,10 +86,10 @@ export default function ShoppingCart() {
                 </p>
 
                 {/* Main Layout: Items + Summary */}
-                <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
+                <div className="flex flex-col lg:flex-row gap-8 items-start">
 
                   {/* Left: Cart Items */}
-                  <div style={{ flex: '1 1 0%', minWidth: 0 }}>
+                  <div className="w-full lg:flex-1 min-w-0 flex flex-col gap-4">
                     <AnimatePresence initial={false}>
                       {cartItems.map(item => {
                         const lineTotal = item.purchaseType === 'subscription'
@@ -103,9 +103,8 @@ export default function ShoppingCart() {
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0, marginBottom: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="mb-4"
                           >
-                            <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm relative">
+                            <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm relative w-full">
                               {/* Remove Button */}
                               <button
                                 onClick={() => removeItem(item.id)}
@@ -115,7 +114,7 @@ export default function ShoppingCart() {
                                 <Trash2 size={16} />
                               </button>
 
-                              <div className="flex items-center gap-5">
+                              <div className="flex flex-col sm:flex-row sm:items-center gap-5">
                                 {/* Product Image */}
                                 <img
                                   src={item.image}
@@ -124,7 +123,7 @@ export default function ShoppingCart() {
                                 />
 
                                 {/* Product Info */}
-                                <div className="flex-1 min-w-0">
+                                <div className="flex-1 min-w-0 w-full">
                                   <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-0.5">
                                     {item.brand}
                                   </p>
@@ -168,7 +167,7 @@ export default function ShoppingCart() {
                                 </div>
 
                                 {/* Line Total */}
-                                <div className="text-right shrink-0 pr-6">
+                                <div className="text-right sm:text-right shrink-0 mt-2 sm:mt-0 sm:pr-6 self-end sm:self-auto">
                                   <p className="text-lg font-bold text-gray-900">${lineTotal.toFixed(2)}</p>
                                 </div>
                               </div>
@@ -180,7 +179,7 @@ export default function ShoppingCart() {
                   </div>
 
                   {/* Right: Order Summary */}
-                  <div style={{ width: '300px', flexShrink: 0, position: 'sticky', top: '2rem' }}>
+                  <div className="w-full lg:w-[320px] shrink-0 lg:sticky lg:top-8">
                     <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
                       <h2 className="font-bold text-gray-900 text-lg mb-5">Order summary</h2>
 

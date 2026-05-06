@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import {
@@ -39,10 +39,10 @@ export default function EditSubscription() {
   const [quantity, setQuantity] = useState(sub.quantity);
 
   return (
-    <div className="flex min-h-screen bg-[#FDFCF9] font-sans">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-[#FDFCF9] font-sans">
       <Sidebar />
 
-      <main className="flex-1 p-8 lg:p-12">
+      <main className="flex-1 p-4 pt-24 sm:p-8 sm:pt-24 lg:p-12 overflow-x-hidden overflow-y-auto">
         <div className="max-w-5xl mx-auto">
           
           {/* Header */}
@@ -78,7 +78,7 @@ export default function EditSubscription() {
                   <h3 className="font-bold text-gray-900 text-lg leading-tight truncate mt-1">{sub.title}</h3>
                   <p className="text-sm text-gray-500 mt-0.5">{sub.brand}</p>
                 </div>
-                <div className="flex flex-col items-end shrink-0 pl-6 border-l border-gray-100 hidden sm:flex">
+                <div className="flex flex-col items-start sm:items-end md:items-end shrink-0 pl-0 sm:pl-6 border-l-0 sm:border-l border-gray-100 mt-4 sm:mt-0">
                   <p className="text-2xl font-bold text-gray-900">${sub.price.toFixed(2)}</p>
                   <p className="text-[10px] font-bold text-[#52B788] uppercase tracking-wide mt-1">per delivery • 15% off</p>
                 </div>

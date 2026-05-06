@@ -1,4 +1,3 @@
-import React from 'react';
 import Sidebar from '../components/Sidebar';
 import { Bell, ShoppingCart, RefreshCw } from 'lucide-react';
 
@@ -66,10 +65,10 @@ const MOCK_HISTORY = [
 
 export default function Reminders() {
   return (
-    <div className="flex min-h-screen bg-[#FDFCF9] font-sans">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-[#FDFCF9] font-sans">
       <Sidebar />
 
-      <main className="flex-1 p-8 lg:p-12">
+      <main className="flex-1 p-4 pt-24 sm:p-8 sm:pt-24 lg:p-12 overflow-x-hidden overflow-y-auto">
         <div className="max-w-5xl mx-auto">
           
           <header className="mb-8">

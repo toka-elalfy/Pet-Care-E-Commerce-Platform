@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
@@ -21,11 +21,11 @@ export default function OrdersPage() {
   const [activeFilter, setActiveFilter] = useState('All');
 
   return (
-    <div className="flex min-h-screen bg-[#FDFCF9] font-sans">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-[#FDFCF9] font-sans">
       <Sidebar />
 
       {/* ── Main Content (The Orders Part) ── */}
-      <main className="flex-1 p-8 lg:p-12">
+      <main className="flex-1 p-4 pt-24 sm:p-8 sm:pt-24 lg:p-12">
         <div className="max-w-5xl mx-auto">
           <header className="mb-8">
             <h1 className="text-3xl font-bold text-gray-900">Orders</h1>
@@ -46,8 +46,8 @@ export default function OrdersPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-            <table className="w-full text-sm">
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-x-auto">
+            <table className="w-full text-sm min-w-[700px]">
               <thead className="bg-gray-50/50 border-b border-gray-100 text-gray-400 font-bold text-[10px] uppercase tracking-widest">
                 <tr>
                   <th className="px-6 py-4 text-left">Order</th>
