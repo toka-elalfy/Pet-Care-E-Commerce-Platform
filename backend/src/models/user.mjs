@@ -19,12 +19,16 @@ const userSchema = new Schema({
         unique: true,
         lowercase: true
     },
-    resetPasswordToken: { 
-        type: String 
-    },      
-    resetPasswordExpire: {
-        type: Date 
+    resetPasswordToken: {
+        type: String
     },
+    resetPasswordExpire: {
+        type: Date
+    },
+    refreshToken: {
+        type: String,
+        default: null,
+    }
 
 }, {
     timestamps: true

@@ -12,7 +12,7 @@ export const handleRegister = async (req, res) => {
         }
         const { fname, lname, email, password } = req.body;
 
-        const username = `${fname} ${lname}`.toLowerCase();
+        const username = `${fname} ${lname}`;
         if (!username || !email || !password) {
             return res.status(400).json({ msg: "All fields are required" });
         }
@@ -39,7 +39,7 @@ export const handleRegister = async (req, res) => {
             { expiresIn: "7d" }
         );
 
-
+        await newUser.updateOne({ refreshToken });
         res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
