@@ -38,8 +38,7 @@ const petSchema = new mongoose.Schema(
         },
         needs : {
             type : [String],
-            required : true,
-            enum : ["Grain-free","Joint support","Sensitive skin","Puppy growth","Weight management","Dental care"]
+            enum : ["Grain-free","Joint support","Sensitive skin","Puppy growth","Weight management","Dental care", "Hairball control", "Kidney health"]
         }
     },
     { timestamps: true }

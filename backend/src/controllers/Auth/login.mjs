@@ -42,12 +42,13 @@ export const handleLogin = async (req, res) => {
         
 
         return res.status(200).json({
-            message: "Login successful",
+            msg: "Login successful",
             accessToken,
             user: {
                 id: targetUser._id,
+                fname: targetUser.fname,
+                lname: targetUser.lname,
                 email: targetUser.email,
-                username: targetUser.username,
             },
         });
     } catch (err) {
