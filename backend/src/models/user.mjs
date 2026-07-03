@@ -1,12 +1,32 @@
 import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcryptjs";
 const userSchema = new Schema({
-    username: {
+    fname: {
         type: String,
         required: true,
-        trim: true,
-        unique: true,
-        lowercase: true
+        trim: true
+    },
+    lname: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    phone: {
+        type: String,
+        default: ""
+    },
+    addresses: [{
+        label: { type: String, default: "Home" }, // e.g. "Home", "Office"
+        street: { type: String, required: true },
+        city: { type: String, required: true },
+        postalCode: { type: String, required: true },
+        country: { type: String, required: true },
+        isPrimary: { type: Boolean, default: false }
+    }],
+    notificationPreferences: {
+        orderUpdates: { type: Boolean, default: true },
+        promotions: { type: Boolean, default: false },
+        smsChannel: { type: Boolean, default: false }
     },
     password: {
         type: String,

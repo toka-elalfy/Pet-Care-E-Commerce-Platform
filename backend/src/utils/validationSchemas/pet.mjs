@@ -29,6 +29,7 @@ export const petValidationSchema = {
         }
     },
     age: {
+        optional: true,
         isNumeric: {
             errorMessage: "Age must be a number"
         },
@@ -38,13 +39,9 @@ export const petValidationSchema = {
         }
     },
     photo: {
+        optional: true,
         isString: {
             errorMessage: "URL must be string"
-        },
-        optional: {
-            options: {
-                nullable: true
-            }
         }
     },
     size: {
@@ -61,6 +58,7 @@ export const petValidationSchema = {
     },
     needs: {
         in: ["body"],
+        optional: true,
         isArray: {
             errorMessage: "Needs must be an array"
         }
@@ -76,10 +74,11 @@ export const petValidationSchema = {
                 "Sensitive skin",
                 "Puppy growth",
                 "Weight management",
-                "Dental care"
+                "Dental care",
+                "Hairball control",
+                "Kidney health"
             ]],
             errorMessage: "Invalid need value"
         }
     }
-
 }

@@ -12,19 +12,18 @@ export const handleRegister = async (req, res) => {
         }
         const { fname, lname, email, password } = req.body;
 
-        const username = `${fname} ${lname}`;
-        if (!username || !email || !password) {
+        if (!fname || !lname || !email || !password) {
             return res.status(400).json({ msg: "All fields are required" });
         }
 
 
-        const existingUser = await user.findOne({ $or: [{ email }, { username }] });
+        const existingUser = await user.findOne({ email });
         if (existingUser) {
-            return res.status(409).json({ msg: "Username or Email already exists" });
+            return res.status(409).json({ msg: "Email already exists" });
         }
 
 
-        const newUser = await user.create({ username, email, password });
+        const newUser = await user.create({ fname, lname, email, password });
 
 
         const accessToken = jwt.sign(
@@ -53,7 +52,8 @@ export const handleRegister = async (req, res) => {
             accessToken,
             user: {
                 id: newUser._id,
-                username: newUser.username,
+                fname: newUser.fname,
+                lname: newUser.lname,
                 email: newUser.email,
             },
         });

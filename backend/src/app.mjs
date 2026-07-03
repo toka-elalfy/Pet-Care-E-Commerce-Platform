@@ -9,11 +9,11 @@ import { swaggerDocs } from './config/swagger.mjs';
 const app = express();
 
 // Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(cookieParser());
 app.use(cors({
-  origin: process.env.CLIENT_URL, 
+  origin: [process.env.CLIENT_URL, 'http://localhost:5174', 'http://localhost:5175'], 
   credentials: true,               
 }));
 

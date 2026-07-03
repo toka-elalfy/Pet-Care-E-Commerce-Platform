@@ -132,5 +132,5 @@ petsRouter.delete("/:id" , deletePet);
  *       404:
  *         description: Pet not found
  */
-petsRouter.get("/petRedcommendations/:petId",getPetRecommendations);
+petsRouter.get("/recommendations/:petId",getPetRecommendations);
 export default petsRouter;
