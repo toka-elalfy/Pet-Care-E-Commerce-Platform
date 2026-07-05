@@ -5,6 +5,8 @@ import { checkSchema } from "express-validator";
 import { loginSchema, registerSchema } from "../utils/validationSchemas/user.mjs";
 import { handleRefresh } from "../controllers/Auth/handleRefresh.mjs";
 import { handleLogout } from "../controllers/Auth/logout.mjs";
+import { handleForgotPassword } from "../controllers/Auth/forgotPassword.mjs";
+import { handleResetPassword } from "../controllers/Auth/resetPassword.mjs";
 
 const AuthRouter = Router();
 
@@ -100,4 +102,6 @@ AuthRouter.post("/refresh", handleRefresh);
  *         description: Logged out successfully
  */
 AuthRouter.post("/logout", handleLogout);
+AuthRouter.post("/forgot-password", handleForgotPassword);
+AuthRouter.post("/reset-password", handleResetPassword);
 export default AuthRouter;
