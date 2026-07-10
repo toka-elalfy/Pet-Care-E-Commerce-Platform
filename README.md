@@ -27,8 +27,6 @@ npm run dev
 - `frontend/`: React application
 - `backend/`: Express API
 - `documentation/`: Project documents and diagrams
-```
-
 
 **The documentation link in Drive** <br/>
 https://drive.google.com/drive/folders/13lvE31EWi6MAVii8hK2HgY8VqmNL_p3I
