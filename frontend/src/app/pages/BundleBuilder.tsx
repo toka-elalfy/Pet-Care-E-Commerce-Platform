@@ -39,11 +39,16 @@ export function BundleBuilder({
     async function loadProducts() {
       try {
         const data = await api.products.getAll();
+        const list = Array.isArray(data)
+          ? data
+          : "products" in data
+          ? data.products
+          : [];
         if (mounted) {
-          setProducts(data);
-          if (data.length >= 2) {
-            const pid1 = data[0].id;
-            const pid2 = data[1].id;
+          setProducts(list);
+          if (list.length >= 2) {
+            const pid1 = list[0].id;
+            const pid2 = list[1].id;
             if (pid1 && pid2) setSelected([pid1, pid2]);
           }
         }

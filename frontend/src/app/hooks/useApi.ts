@@ -2,8 +2,8 @@ import { useCallback } from "react";
 import { api } from "../api";
 import { useAsync } from "./useAsync";
 
-export const useProducts = () => {
-    const fetchProducts = useCallback(() => api.products.getAll(), []);
+export const useProducts = (page? : number, limit? : number) => {
+    const fetchProducts = useCallback(() => api.products.getAll(page as number , limit as number), [page,limit]);
     return useAsync(fetchProducts);
 };
 

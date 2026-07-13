@@ -299,7 +299,7 @@ export function AdminProducts({
     let mounted = true;
     api.products.getAll().then((data) => {
       if (mounted) {
-        setProducts(data);
+        setProducts(data?.products);
         setLoading(false);
       }
     }).catch(() => {

@@ -30,7 +30,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
             qty: item.quantity,
             sub: item.purchaseType === "subscription",
             freq: item.frequency,
-            product: item.product?.title ? { // Convert backend populated product manually
+            product: item.product?.title ? {
                 id: item.product._id,
                 name: item.product.title,
                 price: item.product.price,
@@ -45,7 +45,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
                 petType: "All",
                 size: "All",
                 description: ""
-            } : item.product // If it comes natively or mock, just use it
+            } : item.product 
         }));
     };
 

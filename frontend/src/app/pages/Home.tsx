@@ -11,7 +11,8 @@ export function Home({
   openProduct: (id: string) => void;
   addToCart: (id: string) => void;
 }) {
-  const { status, value: products } = useProducts();
+  const { status, value } = useProducts();
+  const products = value?.products;
 
   if (status === "error") {
     return (

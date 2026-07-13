@@ -28,7 +28,7 @@ export function Recommendations({
         const fetchedProducts = await api.products.getAll();
         if (mounted) {
           setPets(fetchedPets);
-          setProducts(fetchedProducts);
+          setProducts(fetchedProducts.products || fetchedProducts);
           if (fetchedPets.length > 0) {
             setPetId(fetchedPets[0].id || fetchedPets[0]._id);
           }

@@ -12,6 +12,7 @@ export function ProductCard({
   onAdd: () => void;
   showReason?: boolean;
 }) {
+  console.log(product._id);
   return (
     <div
       className="bg-white border overflow-hidden position-relative product-card transition-all hover-lift"

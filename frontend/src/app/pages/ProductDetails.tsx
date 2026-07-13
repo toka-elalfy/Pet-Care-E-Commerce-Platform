@@ -18,12 +18,14 @@ export function ProductDetails({
   const goBundle = () => setRoute("bundle");
 
   const { status, value: product } = useProduct(id);
-  const { value: allProducts } = useProducts();
+  const { value: productsData } = useProducts();
+  const allProducts = productsData?.products || [];
+  const total = productsData?.total || 0;
 
   const [qty, setQty] = useState(1);
   const [sub, setSub] = useState(true);
   const [freq, setFreq] = useState("Every 4 weeks");
-
+  console.log(allProducts);
   if (status === "error") {
     return (
       <div className="d-flex flex-column align-items-center justify-content-center text-center py-5">
@@ -44,7 +46,7 @@ export function ProductDetails({
     );
   }
 
-  const related = (allProducts || []).filter((p) => p.id !== product.id && p.category === product.category).slice(0, 4);
+  const related = (allProducts || [])?.filter((p) => p.id !== product.id && p.category === product.category).slice(0, 4);
 
   return (
     <div className="container-fluid py-4 px-3 px-md-4" style={{ maxWidth: '1280px' }}>

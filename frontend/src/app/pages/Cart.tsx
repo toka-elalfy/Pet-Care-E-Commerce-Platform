@@ -1,6 +1,7 @@
 import { ArrowLeft, Trash2, ShoppingBag, RefreshCw } from "lucide-react";
 import { useNavigate } from "react-router";
 import { useCartContext } from "../context/CartContext";
+import { CartItem } from "../context/CartContext";
 
 export function Cart({
   setRoute,
